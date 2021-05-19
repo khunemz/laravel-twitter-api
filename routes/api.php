@@ -21,7 +21,8 @@ Route::resource('tweets',TweetController::class);
 Route::resource('follows', FollowsController::class);
 
 
-Route::get('/list/{page}/{limit}', [TweetController::class, 'list']);
+Route::get('tweets/list/{page}/{limit}', [TweetController::class, 'list'])->name('tweets.list');
+Route::post('tweets/like', [TweetController::class, 'like'])->name('tweets.like');
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();

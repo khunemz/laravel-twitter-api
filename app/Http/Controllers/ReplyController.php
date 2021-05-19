@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Tweet;
+use App\Models\TweetReply;
 
-class FollowsController extends Controller
+
+class ReplyController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +17,6 @@ class FollowsController extends Controller
     public function index()
     {
         //
-        
     }
 
     /**
@@ -26,6 +28,24 @@ class FollowsController extends Controller
     public function store(Request $request)
     {
         //
+
+        $request->validate([
+            'user_id' => 'required|integer',
+            'tweet_text' => 'required|max:140',
+            'tweet_id' => 'required'  
+        ]);
+
+        $replyTweet = Tweet::create([
+            'user_id' => $request['user_id'],
+            'tweet_text' => $reqe['tweet_text'];
+        ]);
+        $tweet = Tweet::find($request['tweet_id']);
+        return TweetReply::create([
+            'tweet_id' => $tweet['id'],
+            'user_id' => $replyTweet['user_id'],
+            'reply_tweet_id' => $replyTweet['id'],
+        ]);
+        
     }
 
     /**

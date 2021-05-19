@@ -5,14 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Tweet extends Model
+class TweetsQuote extends Model
 {
     use HasFactory;
-    protected $fillable = [
+    protected $fillables = [
+        'tweet_id',
         'user_id',
-        'tweet_text',
-        'retweet_count',
-        'like_count',
-        'quote_count',
+        'quote_tweet_id',
     ];
 }

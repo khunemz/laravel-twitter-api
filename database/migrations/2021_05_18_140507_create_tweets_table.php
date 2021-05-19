@@ -18,7 +18,8 @@ class CreateTweetsTable extends Migration
             $table->integer('user_id');
             $table->string('tweet_text', 140);
             $table->integer('retweet_count');
-            $table->integer('likes_count');
+            $table->integer('like_count');
+            $table->integer('quote_count');
             $table->timestamps();
         });
     }
